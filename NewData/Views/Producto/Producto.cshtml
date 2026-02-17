@@ -1,0 +1,56 @@
+﻿@model List<NewData.Models.Producto>
+
+@{
+    ViewData["Tile"] = "Produuctos";
+}
+
+<link rel="stylesheet" href="~/css/Producto.css" />
+
+<h2 class="titulo-producto">Productos disponibles.</h2>
+
+<form method="get"
+      asp-action="ProductoBuscar"
+      class="search-form">
+
+    <input type="text"
+           name="buscar"
+           placeholder="Buscar producto..."
+           class="search-input"
+           value="@Context.Request.Query["buscar"]" />
+
+    <button class="search-button">
+        Buscar
+    </button>
+</form>
+
+<a asp-controller="Gestion" asp-action="Gestion" class="btn-gestion">
+    Gestión
+</a>
+
+@if (Model == null || !Model.Any())
+{
+    <p class=texto-vacio>No hay productos disponibles.</p>
+}
+else
+{
+    <div class="contenedor-productos">
+        @foreach (var producto in Model)
+        {
+            <div class="card-producto">
+
+                <img src="~/imagenes/@producto.Imagen"
+                alt="@producto.Nombre"
+                class="img-producto" />
+
+                <h3>@producto.Nombre</h3>
+
+                <p class="precio">$@producto.Precio</p>
+
+                <p class="Stock"> 
+                    Stock:<strong>@producto.Stock</strong>
+                </p>
+
+            </div>
+        }
+    </div>
+}

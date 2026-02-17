@@ -1,0 +1,21 @@
+﻿body {
+}
+.crear-form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.titulo-crear {
+    text-align: center;
+    font-weight: 600;
+}
+
+.descripcion-crear {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}

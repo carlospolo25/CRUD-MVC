@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["title"] = "Inicio sesion";
+}
+
+<link rel="stylesheet" href="~/css/Inicio.css" />
+
+<h2 class="title">Iniar sesion</h2>
+
+<div class="login-page">
+
+    <form asp-action="inicio" asp-controller="usuario" method="post" class="login-form">
+       <div class="inicio">
+
+
+            <div class="form-group">
+
+                <label>Correo</label>
+                <input name="Correo" type="email" class="form-control" />
+
+            </div>
+
+            <div>
+
+                <label>Contraña</label>
+                <input name="Contrasena" type="Password" class="form-control" />
+
+            </div>
+
+            <button type="sudmit" class="btn-login">Iniciar</button>
+
+
+       </div>
+
+        @if(!ViewData.ModelState.IsValid)
+        {
+            <div class="login-error">
+
+                @foreach(var error in ViewData.ModelState.Values.SelectMany(V => V.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+        }
+    </form>
+</div>

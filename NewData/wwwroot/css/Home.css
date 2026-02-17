@@ -1,0 +1,71 @@
+﻿.body {
+    background-color: darkgray;
+}
+
+.home-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.home-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    .home-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+.home-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+    .home-buttons a {
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        background-color: #0d6efd;
+    }
+
+        .home-buttons a.register {
+            background-color: #198754;
+        }
+
+/* ===== PRODUCTOS ===== */
+
+.producto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.producto-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+    .producto-card h5 {
+        margin-bottom: 10px;
+    }
+
+    .producto-card p {
+        margin: 5px 0;
+        font-size: 0.95rem;
+    }
+
+.img-producto {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,43 @@
+﻿@model List<NewData.Models.Producto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/home.css" />
+
+<div class="home-container">
+
+    <div class="home-header">
+        <h2>Tu tienda virtual todo lo que necesites</h2>
+
+        <div class="home-buttons">
+            <a asp-action="InicioSesion" asp-controller="Home" method="get">Iniciar</a>
+            <a asp-action="RegistrarUsuario" asp-controller="Home" method="get">Registrar</a>
+        </div>
+    </div>
+
+
+    @if (Model == null || !Model.Any())
+    {
+        <p>No hay productos disponibles.</p>
+    }
+    else
+    {
+        <div class="producto-grid">
+            @foreach (var producto in Model)
+            {
+                <div class="producto-card">
+
+                    <img src="~/imagenes/@producto.Imagen" alt="@producto.Nombre" class="img-producto" />
+
+                    <h5>@producto.Nombre</h5>
+                    <p><strong>Precio:</strong> $@producto.Precio</p>
+                    <p><strong>Stock</strong> @producto.Stock</p>
+
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+

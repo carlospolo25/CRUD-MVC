@@ -1,0 +1,50 @@
+﻿@model Producto
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<link rel="stylesheet" href="~/css/Editar.css" />
+
+<h2 class="titulo-editar">Edición de productos</h2>
+<p class="descripcion-editar">Aquí podrás editar los productos.</p>
+
+<form asp-action="ProductoEditado"
+      asp-controller="Gestion"
+      method="post"
+      enctype="multipart/form-data"
+      class="form-editar">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group mb-3">
+        <label class="form-label">Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Precio</label>
+        <input asp-for="Precio" class="form-control" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Stock</label>
+        <input asp-for="Stock" class="form-control" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label">Imagen</label>
+        <input type="file"
+               name="ImagenArchivo"
+               accept="image/*"
+               class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning w-100">
+        Guardar cambios
+    </button>
+
+</form>

@@ -1,0 +1,84 @@
+﻿@model List<NewData.Models.Producto>
+
+@{
+    ViewData["Title"] = "Gestión";
+}
+<link rel="stylesheet" href="~/css/Gestion.css" />
+
+<h2>Gestión de productos</h2>
+<p>Aquí podrás gestionar los productos.</p>
+
+<a asp-action="CrearProducto"
+   asp-controller="Gestion"
+   class="btn btn-primary mb-3">
+    Crear producto
+</a>
+
+<form method="get" asp-action="GestionBuscar">
+    <input type="text"
+        name="buscar"
+        placeholder="Buscar producto..."
+        class="form-control mb-3"
+        value="@Context.Request.Query["buscar"]"/>
+
+        <button class="btn btn-secondary mb-3">Buscar</button>
+</form>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No hay productos disponibles.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in Model)
+            {
+                <tr>
+                    <td>@producto.Nombre</td>
+                    <td>@producto.Precio</td>
+                    <td>@producto.Stock</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(producto.Imagen))
+                        {
+                            <img src="~/imagenes/@producto.Imagen"
+                                 width="80"
+                                 alt="Imagen del producto" />
+                        }
+                        else
+                        {
+                            <span>Sin imagen</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a asp-action="EditarProducto"
+                           asp-route-id="@producto.Id"
+                           class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+
+                        <form asp-action="EliminarProducto"
+                              asp-route-id="@producto.Id"
+                              method="post"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Seguro que deseas eliminar este producto?');">
+                            <button class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
